@@ -17,7 +17,7 @@ https.get(url, result => {
 						var text = index.selftext;
 						const textembed = new Discord.MessageEmbed()
 							.setTitle(subRedditName)
-							.setColor(FFFFFF)
+							.setColor(9384170)
 							.setDescription(`[${title}](${link})\n\n${text}`)
 							.setURL(`https://reddit.com/${subRedditName}`);
 						message.channel.send(textembed);
@@ -29,7 +29,7 @@ https.get(url, result => {
 					if (index.post_hint !== 'image') {
 						const textembed = new Discord.RichEmbed()
 							.setTitle(subRedditName)
-							.setColor(FFFFFF)
+							.setColor(9384170)
 							.setDescription(`[${title}](${link})\n\n${text}`)
 							.setURL(`https://reddit.com/${subRedditName}`);
 						message.channel.send(textembed);
