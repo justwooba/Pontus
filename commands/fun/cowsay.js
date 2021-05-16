@@ -94,5 +94,5 @@ module.exports.help = {
 	name: 'cowsay',
 	description: 'makes a cow say things',
 	usage: '<message>',
-	category: 'General'
+	category: 'Fun'
 };

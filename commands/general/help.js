@@ -56,7 +56,7 @@ module.exports.run = (bot, message, args) => {
 		[
 			`Available commands for ${bot.user.username}.`,
 			`The bot prefix is **${bot.config.prefix}**`,
-			"`<>`means needed and () it is optional but don't include those"
+			"<> means required and () means optional, but don't include them"
 		].join('\n')
 	);
 	categories.forEach(category => {

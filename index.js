@@ -1,14 +1,13 @@
 // begins constants and command handlers
 const { readdirSync } = require('fs');
 const { sep } = require('path');
-const { success, error, warning } = require('log-symbols');
 const { Client, Collection } = require('discord.js');
 const { MessageEmbed } = require('discord.js');
 const config = require('./config');
 const bot = new Client();
 bot.config = config;
 ['commands', 'aliases'].forEach(x => (bot[x] = new Collection()));
-// load commands function
+// command handler
 const load = (dir = './commands/') => {
 	readdirSync(dir).forEach(dirs => {
 		const commands = readdirSync(`${dir}${sep}${dirs}${sep}`).filter(files =>
@@ -23,21 +22,21 @@ const load = (dir = './commands/') => {
 			) {
 				if (bot.commands.get(pull.help.name))
 					return console.warn(
-						`${warning} Two or more commands have the same name ${
+						`Warning: two or more commands have the same name ${
 							pull.help.name
 						}.`
 					);
 				bot.commands.set(pull.help.name, pull);
-				console.log(`${success} Loaded command ${pull.help.name}.`);
+				console.log(`Loaded command ${pull.help.name}.`);
 			} else {
-				console.log(`${error} Error loading command in ${dir}${dirs}.`);
+				console.log(`Error loading command in ${dir}${dirs}.`);
 				continue;
 			}
 			if (pull.help.aliases && typeof pull.help.aliases === 'object') {
 				pull.help.aliases.forEach(alias => {
 					if (bot.aliases.get(alias))
 						return console.warn(
-							`${warning} Two commands or more commands have the same aliases ${alias}`
+							 `Warning: two commands or more commands have the same aliases ${alias}`
 						);
 					bot.aliases.set(alias, pull.help.name);
 				});
@@ -98,7 +97,7 @@ bot.on('message', async message => {
 		.split(/ +/g);
 	const cmd = args.shift().toLowerCase();
 	let command;
-	if (message.author.bot || !message.guild) return;
+	if (message.author.bot) return;
 	if (!message.member)
 		message.member = await message.guild.fetchMember(message.author);
 	if (!message.content.startsWith(prefix)) return;

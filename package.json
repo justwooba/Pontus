@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/WoobaTheGreat/Pontus#readme",
   "dependencies": {
+    "discord-uno": "^2.0.21",
     "discord.js": "^12.5.3",
+    "distube": "^2.8.13",
     "log-symbols": "^5.0.0",
+    "parse-ms": "^3.0.0",
     "quick.db": "^7.1.3"
   }
 }
